@@ -1,0 +1,8 @@
+PeriodicTableJSON.json is used under CC-BY-SA-3.0 
+Accessed 17-10-2024 from the github repository hosted by Bowserinator.
+
+allIsotopes.json is used under the MIT licnese.
+Accessed 17-10-2024 from the github repository hosted by sjf8203.
+
+
+

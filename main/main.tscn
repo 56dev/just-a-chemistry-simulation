@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8rfmutwacyan"]
+
+[ext_resource type="Script" path="res://Scripts/atom_generator.gd" id="1_r6xhu"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_gubil"]
+
+[node name="main" type="Node2D"]
+
+[node name="ATOM_GENERATOR" type="Node" parent="."]
+script = ExtResource("1_r6xhu")
+path_to_periodic_table = &"res://PeriodicTableJSON.json"
+path_to_isotope_table = &"res://allIsotopes.json"
+
+[node name="AtomGeneratorUI" type="CanvasLayer" parent="ATOM_GENERATOR"]
+
+[node name="AtomNumberInput" type="LineEdit" parent="ATOM_GENERATOR/AtomGeneratorUI"]
+offset_left = 29.0
+offset_top = 20.0
+offset_right = 279.0
+offset_bottom = 51.0
+placeholder_text = "Write an atomic number here."
+max_length = 3
+
+[node name="GenerateButton" type="Button" parent="ATOM_GENERATOR/AtomGeneratorUI"]
+offset_left = 29.0
+offset_top = 64.0
+offset_right = 150.0
+offset_bottom = 92.0
+text = "GENERATE"
+
+[node name="AtomNumberInput_ERRORTEXT" type="RichTextLabel" parent="ATOM_GENERATOR/AtomGeneratorUI"]
+modulate = Color(0.835294, 0, 0.105882, 1)
+offset_left = 29.0
+offset_top = 111.0
+offset_right = 240.0
+offset_bottom = 169.0
+fit_content = true
+
+[node name="GenerationOptions" type="VBoxContainer" parent="ATOM_GENERATOR/AtomGeneratorUI"]
+offset_left = 27.0
+offset_top = 116.0
+offset_right = 276.0
+offset_bottom = 182.0
+
+[node name="FollowIsotopicDistribution" type="CheckBox" parent="ATOM_GENERATOR/AtomGeneratorUI/GenerationOptions"]
+layout_mode = 2
+button_pressed = true
+button_group = SubResource("ButtonGroup_gubil")
+text = "Follow isotopic distribution"
+
+[node name="AverageAtomicMass" type="CheckBox" parent="ATOM_GENERATOR/AtomGeneratorUI/GenerationOptions"]
+layout_mode = 2
+button_group = SubResource("ButtonGroup_gubil")
+text = "Always average atomic mass"
+
+[connection signal="pressed" from="ATOM_GENERATOR/AtomGeneratorUI/GenerateButton" to="ATOM_GENERATOR" method="on_pressed"]
